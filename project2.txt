@@ -1,0 +1,52 @@
+﻿1. CUSTOMER(semua org)
+- boleh tngk makan, mnuman, desert - done
+- boleh order mknn
+- blh dftr sbgai member(register)
+- nk order x gna mmbr pun xpe 
+- byr tunai bila delivery
+- customer xleh cncel order(msti ada pemberitahuan)
+-ade quantity mknn(bila cstmr nk order 2 utk mknn tu, ia akn jdi total lalu utk hrga tu)
+- ade notif masa utk delivery
+- customer blh plih nk ambk kat kdai or dlvry
+- listbox utk alamat yg blh delivery
+- ade limit utk order (30 jew)
+
+
+2. admin
+- blh tmbah mknn(harga&gmbr),mnuman(harga&gmbr),desert(harga&gmbr),promotion(gmbr shja)&blh tmbah psal staff
+- blh pdam mknn(harga&gmbr),mnuman(harga&gmbr),desert(harga&gmbr),promotion(gmbr shja), &psl staff
+- blh update 
+- blh tngk spe yg order&customer yg dftr mmbr
+- blh atr msg kew customer klu mknn tu hbs
+- ble customer order mknn, ia akan smpai kat admin, kira admin xyah bt apa2, kira bnde tu automatik gi kew staff utk staff mne yg prlu cra order tu
+  cth: A: order nsi arab
+         B: order nsi kukus
+	(ia akn smpai kat admin n staff)
+	(bnde yg diorder akan automatik gi kat staff A utk cstmr A, gi kat staff B utk Cstmr B & strusnya nyer lah... kira staff xde yg gyang kaki)
+- admin blh change blik utk nme n psword
+
+
+3.staff(perkja)
+- cstmr order, jdi dia akn tahu dia prlu bt apa
+- just print resit
+- blh edit prfil
+- bla custmr order, n dia dh siap bt tgas dia, dia blh tip mna yg dh htr n mna yg blum htr(x psti yg nie kat admin or kat staff)
+
+
+*kat index(utk cstmr shja) ada button home,food,promotion,my account, contact us (ats krtviti) - done
+*nma restoran (Restaurant Al-Idrus)
+*tmpt gong badak, cwngan kat ladang (trengganu shja)
+*login(utk staff n admin) satu page jew lecturer nak......
+
+nie objektif prject sya
+1.Membangunkan sebuah sistem E-Restoran yang menyediakan pelbagai servis menerusi talian internet.
+2. Menyediakan servis tempahan ruang dan makanan untuk pelanggan yang boleh membantu pengusaha meningkatkan kecekapan pengurusan dan belanjawan.
+3. Menyediakan menu secara atas talian yang boleh dilayari pada bila-bila masa dan lebih fleksibel.
+
+
+#nie jew... tq :)
+
+
+ 
+
+
