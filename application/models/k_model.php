@@ -264,6 +264,10 @@ class K_model extends CI_Model {
         else if($messageType == "login")
         {
              $this->session->set_flashdata('error', 'Please login first before book.');
+        }
+        else if($messageType == "logout")
+        {
+             $this->session->set_flashdata('logout', 'Successful logout, thnk you and please come again.');
         }        
         else if($messageType == "email")
         {
@@ -273,9 +277,9 @@ class K_model extends CI_Model {
         {
              $this->session->set_flashdata('booking', 'Successfully sent email and sms to your contact with details information. Thank you.');
         }   
-        else if($messageType == "reset_pass")
+        else if($messageType == "login_error")
         {
-             $this->session->set_flashdata('email', 'Your new password is abc123.');
+             $this->session->set_flashdata('login_error', 'Username/email or password incorrect.');
         }       
         if($urlToGo == false){
              $url = current_url();

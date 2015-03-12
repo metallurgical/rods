@@ -94,6 +94,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header"><?php echo $title;?></h1>
+                        <?php $this->load->view('data_messages');?>
                     </div>
                                      
                 </div>
@@ -101,7 +102,7 @@
                     <div class="col-lg-12">
                         <div>
                     		<div class="row">
-                              <form class="form-signin mg-btm">
+                              <form class="form-signin mg-btm" action="" method="POST">
                                 <h3 class="heading-desc">
                                 <button type="button" class="close pull-right" aria-hidden="true">×</button>
                                 Log In Here</h3>
@@ -117,10 +118,10 @@
                                 <div class="login-footer">
                                 <div class="row">
                                                 
-                                                <div class="col-xs-6 col-md-6 pull-right">
-                                                    <button type="submit" class="btn btn-large btn-danger pull-right">Login</button>
-                                                </div>
-                                            </div>
+                                  <div class="col-xs-6 col-md-6 pull-right">
+                                      <input type="submit" class="btn btn-large btn-danger pull-right" name="submit" value="Login" />
+                                  </div>
+                                </div>
                                 
                                 </div>
                               </form>
