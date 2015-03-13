@@ -36,6 +36,12 @@
                             <a href="<?php echo base_url();?>food_management/customer_manage"><i class="fa fa-dashboard fa-fw"></i> Customers Management</a>
                         </li>
                         <li>
+                            <a href="<?php echo base_url();?>food_management/order_manage"><i class="fa fa-dashboard fa-fw"></i> Customer Orders</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo base_url();?>user_management/configuration_admin"><i class="fa fa-dashboard fa-fw"></i> Configuration</a>
+                        </li>
+                        <!-- <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> My Account<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -43,8 +49,8 @@
                                 </li>
                                 
                             </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+                            
+                        </li> -->
                         
                         
                         

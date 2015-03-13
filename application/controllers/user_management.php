@@ -144,6 +144,19 @@ class User_management extends CI_Controller {
 			$this->k_model->display_message($message, $urlToGo);
 		}
 	}
+
+
+	public function  configuration_admin()
+	{
+		$data['title'] = "Configuration Form";
+		$user_id = $this->session->userdata('user_id');
+		$table = "users";
+		$where = array(
+					  'user_id' => $user_id
+					  );
+		$data['users'] = $this->k_model->get_specified_row($table, $where);
+		$this->load->view('configuration_admin', $data);
+	}
 }
 
 /* End of file welcome.php */

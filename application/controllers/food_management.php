@@ -29,18 +29,7 @@ class Food_management extends CI_Controller {
 			 ->callback_field('food_category_id',array($this,'callback_add_food_categories'));
 
 		$crud->set_field_upload('food_picture','assets/uploads/files');
-		/*$crud->unset_columns('student_id','appointment_reply')
-			 ->unset_read_fields('student_id'); // never displayed this column in list
-
-		$crud->add_fields('appointment_date','appointment_time','appointment_message','student_id')
-			 ->edit_fields('appointment_date','appointment_time','appointment_message');
-
-		$crud->callback_column('appointment_status',array($this,'callback_display_status'))
-			 ->callback_read_field('appointment_status',array($this,'callback_display_status')) // on view/read part
-			 ->callback_read_field('appointment_reply',array($this,'callback_display_reply'))
-			 ->callback_before_insert(array($this,'callback_add_student_data'));  // on view/read part
-	
-		$crud->change_field_type('student_id','invisible');*/
+		
 
 
 
@@ -60,11 +49,7 @@ class Food_management extends CI_Controller {
 
 	public function callback_add_food_categories($value, $primary_key){
 
-    	/*$a = ($value == 0) ? 'selected' : '';
-    	$b = ($value == 1) ? 'selected' : '';
-    	$c = ($value == 2) ? 'selected' : '';
-    	$d = ($value == 3) ? 'selected' : '';
-*/
+    	
     	$display = '<select name="food_category_id">
     					
     					<option value="1">Dessert</option>
@@ -115,28 +100,9 @@ class Food_management extends CI_Controller {
 		$crud = new grocery_CRUD();
         $state = $crud->getState();
 		
-		$crud->set_table('promotions');
+		$crud->set_table('promotions');	
 		
-		/*$crud->callback_column('food_category_id',array($this,'callback_food_categories'))
-			 ->callback_read_field('food_category_id',array($this,'callback_food_categories'))
-			 ->callback_field('food_category_id',array($this,'callback_add_food_categories'));
-*/
 		$crud->set_field_upload('promotion_picture','assets/uploads/files');
-		/*$crud->unset_columns('student_id','appointment_reply')
-			 ->unset_read_fields('student_id'); // never displayed this column in list
-
-		$crud->add_fields('appointment_date','appointment_time','appointment_message','student_id')
-			 ->edit_fields('appointment_date','appointment_time','appointment_message');
-
-		$crud->callback_column('appointment_status',array($this,'callback_display_status'))
-			 ->callback_read_field('appointment_status',array($this,'callback_display_status')) // on view/read part
-			 ->callback_read_field('appointment_reply',array($this,'callback_display_reply'))
-			 ->callback_before_insert(array($this,'callback_add_student_data'));  // on view/read part
-	
-		$crud->change_field_type('student_id','invisible');*/
-
-
-
 		$output = $crud->render();
 		$output->data = $data;
 		$this->load->view('universal_page', $output);
@@ -151,30 +117,101 @@ class Food_management extends CI_Controller {
         $state = $crud->getState();
 		
 		$crud->set_table('customers');
-		
-		/*$crud->callback_column('food_category_id',array($this,'callback_food_categories'))
-			 ->callback_read_field('food_category_id',array($this,'callback_food_categories'))
-			 ->callback_field('food_category_id',array($this,'callback_add_food_categories'));
-*/
-		/*$crud->set_field_upload('promotion_picture','assets/uploads/files');*/
-		/*$crud->unset_columns('student_id','appointment_reply')
-			 ->unset_read_fields('student_id'); // never displayed this column in list
-
-		$crud->add_fields('appointment_date','appointment_time','appointment_message','student_id')
-			 ->edit_fields('appointment_date','appointment_time','appointment_message');
-
-		$crud->callback_column('appointment_status',array($this,'callback_display_status'))
-			 ->callback_read_field('appointment_status',array($this,'callback_display_status')) // on view/read part
-			 ->callback_read_field('appointment_reply',array($this,'callback_display_reply'))
-			 ->callback_before_insert(array($this,'callback_add_student_data'));  // on view/read part
-	
-		$crud->change_field_type('student_id','invisible');*/
-
-
 
 		$output = $crud->render();
 		$output->data = $data;
 		$this->load->view('universal_page', $output);
+	}
+
+	public function order_manage()
+	{
+		
+		$data['title'] = 'Customers Order';
+
+		$crud = new grocery_CRUD();
+        $state = $crud->getState();
+		
+		$crud->set_table('food_order')
+		     ->or_where('food_order_status',1)
+		     ->or_where('food_order_status',2)
+		     ->or_where('food_order_status',3);
+
+		$crud->unset_operations();
+
+		$crud->display_as('food_id','Picture')
+			 ->display_as('customer_id','Customer Name');
+
+		$crud->callback_column('food_order_status',array($this,'callback_food_status'))
+			 ->callback_column('food_order_delivery',array($this,'callback_food_delivery'))
+			 ->callback_column('customer_id',array($this,'callback_customer'))
+			 ->callback_column('food_id',array($this,'callback_food'));
+
+		$output = $crud->render();
+		$output->data = $data;
+		$this->load->view('universal_page', $output);
+	}
+
+
+	public function callback_food_status($value, $primary_key){
+
+    	
+    	if($value==1)
+    	{
+    		$status = "Confirmed";
+    	}
+    	else if($value==2)
+    	{
+    		$status = "Delivering Process";
+    	}
+    	else if($value==3)
+    	{
+    		$status = "Delivered";
+    	}
+    	return $status;
+	}
+
+
+	public function callback_food_delivery($value, $primary_key)
+	{
+
+    	
+    	if($value==1)
+    	{
+    		$status = "Cash On Delivery";
+    	}
+    	else if($value==2)
+    	{
+    		$status = "Self Take";
+    	}
+    	
+    	return $status;
+	}
+
+
+	public function callback_customer($value, $row)
+	{
+		$where       = array( 
+			 					'customer_id' => $value
+			 				);
+	    $student = $this->k_model->get_specified_row('customers',$where);
+		return $student['customer_name'];
+	}
+
+	public function callback_food($value, $row)
+	{
+		
+		$tableNameToJoin = array(						
+							'food_categories'
+							);
+		$tableRelation = array(
+							'foods.food_category_id = food_categories.food_category_id'
+							);
+		$where        = array( 
+			 				'food_id' => $value
+			 				);
+	    $info = $this->k_model->get_specified_row('foods',$where, $tableNameToJoin, $tableRelation);
+		return '<img src="'.base_url().'assets/uploads/files/'.$info['food_picture'].'" width="50" height="50">';
+		//$info['food_category_name']
 	}
 	
 }
