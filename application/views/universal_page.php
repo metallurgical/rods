@@ -4,7 +4,7 @@
 
     <div id="wrapper">
 
-        <?php $this->load->view('header_top'); ?>
+        <?php $this->load->view('main_header_top'); ?>
         <?php $this->load->view('menus_admin.php'); ?>            
 <!-- dont disturb here -->
 

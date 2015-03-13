@@ -18,6 +18,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header"><?php echo $title;?></h1>
+                        <?php $this->load->view('data_messages');?>
                     </div>
                                      
                 </div>
@@ -34,10 +35,10 @@
                                     <div class="thumbnail">
                                       <img src="<?php echo base_url();?>assets/uploads/files/<?php echo $value['food_picture'];?>" alt="..." width="242" height="200">
                                       <div class="caption">
-                                        <h3><?php echo $value['food_name'];?></h3>
+                                        <h3><?php echo $value['food_name'];?>(RM <?php echo $value['food_price'];?>)</h3>
                                         <p><?php echo $value['food_description'];?></p>
                                         <p>
-                                        <a href="<?php echo base_url();?>booking/order/<?php echo $value['food_id'];?>" class="btn btn-primary" role="button">Booking</a> 
+                                        <a href="<?php echo base_url();?>booking/order/<?php echo $value['food_id'];?>" class="btn btn-primary" role="button" onclick='return confirm("Are you sure to order this item");'>Order Now</a> 
                                         </p>
                                       </div>
                                     </div>

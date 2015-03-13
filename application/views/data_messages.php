@@ -8,7 +8,9 @@
                              array('text' => $this->session->flashdata('email'), 'alert_type' => 'alert-success'),
                              array('text' => $this->session->flashdata('login'), 'alert_type' => 'alert-danger'),
                              array('text' => $this->session->flashdata('login_error'), 'alert_type' => 'alert-danger'),
-                             array('text' => $this->session->flashdata('logout'), 'alert_type' => 'alert-success')
+                             array('text' => $this->session->flashdata('logout'), 'alert_type' => 'alert-success'),
+                             array('text' => $this->session->flashdata('order'), 'alert_type' => 'alert-success'),
+                             array('text' => $this->session->flashdata('confirm_order'), 'alert_type' => 'alert-success')
                              
                             );
                 

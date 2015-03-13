@@ -32,10 +32,28 @@
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> My Account<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
+                                
+                                <?php
+                                if($this->session->userdata('user_id'))
+                                {
+                                ?>
+                                <li>
+                                    <a href="<?php echo base_url();?>booking/list_order">Order</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url();?>user_management/login">Message</a>
+                                </li>
+                                <?php
+                                }
+                                else
+                                {
+                                ?>
                                 <li>
                                     <a href="<?php echo base_url();?>user_management/login">Login</a>
                                 </li>
-                                
+                                <?php
+                                }
+                                ?>     
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

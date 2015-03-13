@@ -276,7 +276,15 @@ class K_model extends CI_Model {
         else if($messageType == "booking")
         {
              $this->session->set_flashdata('booking', 'Successfully sent email and sms to your contact with details information. Thank you.');
-        }   
+        }
+        else if($messageType == "order")
+        {
+             $this->session->set_flashdata('order', 'Order success, here is the list of your orders.');
+        } 
+        else if($messageType == "confirm_order")
+        {
+             $this->session->set_flashdata('confirm_order', 'All the orders were confirmed.');
+        }  
         else if($messageType == "login_error")
         {
              $this->session->set_flashdata('login_error', 'Username/email or password incorrect.');

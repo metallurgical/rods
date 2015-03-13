@@ -33,6 +33,9 @@
                             <a href="<?php echo base_url();?>food_management/promotion_manage"><i class="fa fa-dashboard fa-fw"></i> Promotions Management</a>
                         </li>
                         <li>
+                            <a href="<?php echo base_url();?>food_management/customer_manage"><i class="fa fa-dashboard fa-fw"></i> Customers Management</a>
+                        </li>
+                        <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> My Account<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>

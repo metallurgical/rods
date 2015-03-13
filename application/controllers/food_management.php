@@ -141,6 +141,41 @@ class Food_management extends CI_Controller {
 		$output->data = $data;
 		$this->load->view('universal_page', $output);
 	}
+
+	public function customer_manage()
+	{
+		
+		$data['title'] = 'Promotions Management';
+
+		$crud = new grocery_CRUD();
+        $state = $crud->getState();
+		
+		$crud->set_table('customers');
+		
+		/*$crud->callback_column('food_category_id',array($this,'callback_food_categories'))
+			 ->callback_read_field('food_category_id',array($this,'callback_food_categories'))
+			 ->callback_field('food_category_id',array($this,'callback_add_food_categories'));
+*/
+		/*$crud->set_field_upload('promotion_picture','assets/uploads/files');*/
+		/*$crud->unset_columns('student_id','appointment_reply')
+			 ->unset_read_fields('student_id'); // never displayed this column in list
+
+		$crud->add_fields('appointment_date','appointment_time','appointment_message','student_id')
+			 ->edit_fields('appointment_date','appointment_time','appointment_message');
+
+		$crud->callback_column('appointment_status',array($this,'callback_display_status'))
+			 ->callback_read_field('appointment_status',array($this,'callback_display_status')) // on view/read part
+			 ->callback_read_field('appointment_reply',array($this,'callback_display_reply'))
+			 ->callback_before_insert(array($this,'callback_add_student_data'));  // on view/read part
+	
+		$crud->change_field_type('student_id','invisible');*/
+
+
+
+		$output = $crud->render();
+		$output->data = $data;
+		$this->load->view('universal_page', $output);
+	}
 	
 }
 
