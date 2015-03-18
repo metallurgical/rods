@@ -5,7 +5,7 @@ class Welcome extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->output->enable_profiler(TRUE);
+		//$this->output->enable_profiler(TRUE);
 	}
 	
 	public function index()
@@ -33,6 +33,26 @@ class Welcome extends CI_Controller {
 		$data['foods'] = $this->k_model->get_all_rows($table, $where, $tableNameToJoin, $tableRelation);
 
 		$this->load->view('foods', $data);
+	}
+
+	public function contact_us()
+	{
+		$data['title'] = "Contact Us";
+		$this->load->view('contact_us', $data);
+	}
+
+
+	public function promotions(){
+
+						
+		$data['title'] = 'Promotions';
+		
+
+		$table = "promotions";
+
+		$data['promotions'] = $this->k_model->get_all_rows($table);
+
+		$this->load->view('promotions', $data);
 	}
 }
 

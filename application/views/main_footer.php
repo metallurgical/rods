@@ -14,4 +14,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="<?php echo base_url();?>assets/js/sb-admin-2.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="<?php echo base_url();?>assets/js/jssor.slider.mini.js"></script>
     

@@ -5,7 +5,7 @@ class User_management extends CI_Controller {
 	public function __construct()
 	{
 			parent::__construct();
-			$this->output->enable_profiler(TRUE);
+			//$this->output->enable_profiler(TRUE);
 	}	
 
 	public function login()
@@ -26,7 +26,7 @@ class User_management extends CI_Controller {
 			$customer = $this->k_model->get_specified_row($table, $where);
 
 
-			if(isset($customer))
+			if(!empty($customer))
 			{
 				$sessionData = array(
 								'user_id'  => $customer['customer_id'],
@@ -70,8 +70,8 @@ class User_management extends CI_Controller {
 					  );
 			$info = $this->k_model->get_specified_row($table, $where);
 
-
-			if(isset($info))
+			//print_r($info);
+			if(!empty($info))
 			{
 				if($info['user_category']=="admin")
 				{
@@ -93,7 +93,7 @@ class User_management extends CI_Controller {
 								);			
 				
 					$this->session->set_userdata($sessionData);
-					redirect('order_management');
+					redirect('order_management/list_order_staff');
 				}
 				
 				
@@ -101,7 +101,7 @@ class User_management extends CI_Controller {
 			else
 			{
 				$message = "login_error";
-				$urlToGo = 'user_management/login_admin_staff';
+				$urlToGo = 'user_management/auth_login';
 				$this->k_model->display_message($message, $urlToGo);
 			}
 
@@ -156,6 +156,45 @@ class User_management extends CI_Controller {
 					  );
 		$data['users'] = $this->k_model->get_specified_row($table, $where);
 		$this->load->view('configuration_admin', $data);
+	}
+
+	public function edit_profile()
+	{
+		$data['title'] = "Edit Profile";
+		$table = "users";
+		$user_id = $this->session->userdata('user_id');
+		$where = array(
+					  'user_id' => $user_id
+					  );
+		$data['users'] = $this->k_model->get_specified_row($table, $where);
+		$this->load->view('edit_profile', $data);
+
+		if($this->input->post('submit'))
+		{
+			$formData = $this->input->post();
+
+			if($formData['user_password']!=$formData['c_user_password'])
+			{
+				$message = "password_match";
+				$this->k_model->display_message($message);
+			}
+			else
+			{
+				$tableToUpdate = "users";
+				$usingCondition = array(
+									'user_id' => $user_id
+									);
+				$columnToUpdate = array(
+									'user_username' => $formData['user_username'],
+									'user_name'     => $formData['user_name'],
+									'user_password' => $formData['user_password']
+									);
+				$this->k_model->update_data($columnToUpdate, $tableToUpdate, $usingCondition);
+				$message = "update";
+				$this->k_model->display_message($message);
+			}
+
+		}
 	}
 }
 

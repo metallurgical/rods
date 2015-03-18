@@ -173,7 +173,7 @@ class K_model extends CI_Model {
 
             $this->db->select('*');
             $this->db->from($table);
-
+//$this->db->select('title')->from('mytable')
             if($where!=false){
                $this->db->where($where);
             }
@@ -192,6 +192,28 @@ class K_model extends CI_Model {
             $query = $this->db->get();
             return $query->result_array(); 
            
+    }
+
+    public function get_distinct_order($table,$where = false, $tableNameToJoin = false, $tableRelation = false, $order_by = false)
+    {
+        $this->db->select('distinct(food_order.customer_id)');
+        $this->db->from('food_order');
+        if($where!=false){
+               $this->db->where($where);
+            }
+           
+           if($order_by!=false){
+                $this->db->order_by($order_by[0], $order_by[1]);
+           }
+        
+           if($tableNameToJoin!=false && $tableRelation!=false){
+                for ($i=0; $i < count($tableNameToJoin); $i++){
+                    $this->db->join($tableNameToJoin[$i], $tableRelation[$i]);
+                }
+                
+           }
+        $query = $this->db->get();
+        return $query->result_array(); 
     }
 
 
@@ -288,7 +310,12 @@ class K_model extends CI_Model {
         else if($messageType == "login_error")
         {
              $this->session->set_flashdata('login_error', 'Username/email or password incorrect.');
-        }       
+        }
+        else if($messageType == "password_match")
+        {
+             $this->session->set_flashdata('password_match', 'Password not match, try again');
+        }
+
         if($urlToGo == false){
              $url = current_url();
         }

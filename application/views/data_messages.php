@@ -10,7 +10,8 @@
                              array('text' => $this->session->flashdata('login_error'), 'alert_type' => 'alert-danger'),
                              array('text' => $this->session->flashdata('logout'), 'alert_type' => 'alert-success'),
                              array('text' => $this->session->flashdata('order'), 'alert_type' => 'alert-success'),
-                             array('text' => $this->session->flashdata('confirm_order'), 'alert_type' => 'alert-success')
+                             array('text' => $this->session->flashdata('confirm_order'), 'alert_type' => 'alert-success'),
+                             array('text' => $this->session->flashdata('password_match'), 'alert_type' => 'alert-danger')
                              
                             );
                 

@@ -5,7 +5,7 @@
     <div id="wrapper">
 
         <?php $this->load->view('main_header_top'); ?>
-        <?php $this->load->view('main_menus.php'); ?>            
+        <?php $this->load->view('menus_staff'); ?>            
 <!-- dont disturb here -->
 
 
@@ -24,9 +24,48 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">Customer Detail</div>
+                          <div class="panel-body">
+                            <table class="table">
+                              <tr>
+                                <td width="100">Name</td>
+                                <td>: <?php echo $customer['customer_name'];?></td>
+                              </tr>
+                              <tr>
+                                <td>Ic</td>
+                                <td>: <?php echo $customer['customer_ic'];?></td>
+                              </tr>
+                              <tr>
+                                <td>Phone</td>
+                                <td>: <?php echo $customer['customer_phone'];?></td>
+                              </tr>
+                              <tr>
+                                <td>Email</td>
+                                <td>: <?php echo $customer['customer_email'];?></td>
+                              </tr>
+                              <tr>
+                                <td>Address</td>
+                                <td>: <?php echo $customer['customer_address'];?></td>
+                              </tr>
+                              <!-- <tr>
+                                <td></td>
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <td></td>
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <td></td>
+                                <td></td>
+                              </tr> -->
+                            </table>
+                          </div>
+                        </div>
                         <div>
                     		<div class="row">
-                        <span class="label label-danger">Please be noted, after the orders was confirmed, cancelation of order no longer acceptable.</span>
+                        
                         <form action="" method="POST">
                             <table class="table table-striped">
                             <thead>
@@ -36,7 +75,6 @@
                                 <th>Category</th>                                
                                 <th>Name</th>
                                 <th>Status Order</th>
-                                <th>Notice</th>
                                 <th>Method(Delivery)</th>
                                 <th>Price(RM)</th>
                                 <th>Action</th>
@@ -54,7 +92,7 @@
                                <tr>
                                 <th scope="row">
                                   <?php echo $num++;?>
-                                  <input type="hidden" name="food_order_id[]" value="<?php echo $value['food_order_id'];?>">
+                                  <!-- <input type="hidden" name="food_order_id[]" value="<?php echo $value['food_order_id'];?>"> -->
                                 </th>
                                 <td><img src="<?php echo base_url();?>assets/uploads/files/<?php echo $value['food_picture'];?>" alt="..." width="50" height="50"></td>
                                 <td><?php echo $value['food_category_name'];?></td>
@@ -69,15 +107,6 @@
                                     echo '<font color="orange">Delivery Process</font>';
                                   else if($value['food_order_status']==3)  
                                     echo '<font color="green">Delivered</font>';
-                                  else if($value['food_order_status']==4)  
-                                    echo '<font color="red">Food out service</font>';                                
-                                     
-                                ;?>
-                                </td>
-                                <td>
-                                <?php 
-                                  if($value['food_order_notis']=="")                                
-                                    echo '<font color="green">No notice</font>';
                                   else if($value['food_order_status']==4)  
                                     echo '<font color="red">Food out service</font>';                                
                                      
@@ -104,8 +133,10 @@
                                 ?>
                                 </td>
                                 <td>
+                                <input type="checkbox" name="food_order_id[]" value="<?php echo $value['food_order_id'];?>">
                                 <?php 
-                                  if($value['food_order_status']==0)
+
+                                  /*if($value['food_order_status']==0)
                                   { ?>
                                     <a href="<?php echo base_url();?>booking/delete_order/<?php echo $value['food_order_id'];?>" class="btn btn-danger" role="button" onclick='return confirm("Are you sure to order this item");'>Delete</a> 
                                     
@@ -115,7 +146,7 @@
                                   {
                                     echo "No action";
                                   }
-                                  
+                                  */
                                 ;?></td> 
                               </tr>
                               <?php 
@@ -133,15 +164,19 @@
                               </tr>
                                </tbody>
                            </table>
-                           <?php
-                           
-                           if($order_method)
-                            {?>
-                           <input type="submit" value="Confirm" name="submit" class="btn btn-info">
-                           <?php
-                            }
-                           ?>
-                        </form>
+                           <p>
+                           <select class="form-control" name="food_order_status">
+                              <option value="">--Sila Pilih--</option>
+                              <option value="2">Delivery Process</option>
+                              <option value="3">Delivered</option>
+                              <option value="4">Food Out Of Services</option>                              
+                            </select>
+                            <br/>
+                            <input type="hidden" name="customer_id" value="<?php echo $value['customer_id'];?>">
+                            <button type="submit" class="btn btn-success" name="submit">Submit</button>
+                            <button type="button" class="btn btn-default" name="print" onclick="window.location.href='<?php echo base_url();?>order_management/print_receipt/<?php echo $value['customer_id'];?>'">Print Receipt</button>
+                           </p>
+                        </form><br/><br/><br/>
                             </div>
                     	</div>
                     </div>

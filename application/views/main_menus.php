@@ -23,11 +23,11 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="<?php echo base_url();?>students"><i class="fa fa-dashboard fa-fw"></i> Promotion</a>
+                            <a href="<?php echo base_url();?>welcome/promotions"><i class="fa fa-dashboard fa-fw"></i> Promotion</a>
                         </li>
                         
                         <li>
-                            <a href="<?php echo base_url();?>students"><i class="fa fa-dashboard fa-fw"></i> Contact Us</a>
+                            <a href="<?php echo base_url();?>welcome/contact_us"><i class="fa fa-dashboard fa-fw"></i> Contact Us</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> My Account<span class="fa arrow"></span></a>
@@ -40,9 +40,9 @@
                                 <li>
                                     <a href="<?php echo base_url();?>booking/list_order">Order</a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="<?php echo base_url();?>user_management/login">Message</a>
-                                </li>
+                                </li> -->
                                 <?php
                                 }
                                 else
