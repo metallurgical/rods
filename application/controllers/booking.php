@@ -77,6 +77,7 @@ class Booking extends CI_Controller {
 			$formData = $this->input->post();
 			$data['food_order_id'] = $formData['food_order_id'];
 			$data['food_order_delivery'] = $formData['food_order_delivery'];
+			$data['food_order_qtty'] =  $formData['food_order_qtty'];
 
 
 			for($i = 0; $i < count($data['food_order_id']); $i++)
@@ -87,7 +88,9 @@ class Booking extends CI_Controller {
 								);
 				$columnToUpdate = array(
 									'food_order_status' => 1,
-									'food_order_delivery' => $data['food_order_delivery'][$i][0]
+									'food_order_delivery' => $data['food_order_delivery'][$i][0],
+									'food_order_qtty' => $data['food_order_qtty'][$i],
+									'food_order_time_takeshop' => $formData['food_order_time_takeshop'][$i]
 								);
 				$this->k_model->update_data($columnToUpdate, $tableToUpdate, $usingCondition);
 			}

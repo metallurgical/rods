@@ -136,7 +136,9 @@ class Food_management extends CI_Controller {
 		     ->or_where('food_order_status',2)
 		     ->or_where('food_order_status',3);
 
-		$crud->unset_operations();
+		$crud->unset_add()
+			 ->unset_edit()
+			 ->unset_read();
 
 		$crud->display_as('food_id','Picture')
 			 ->display_as('customer_id','Customer Name');

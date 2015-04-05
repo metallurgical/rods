@@ -40,9 +40,9 @@
                                 <li>
                                     <a href="<?php echo base_url();?>booking/list_order">Order</a>
                                 </li>
-                                <!-- <li>
-                                    <a href="<?php echo base_url();?>user_management/login">Message</a>
-                                </li> -->
+                                <li>
+                                    <a href="<?php echo base_url();?>user_management/login">Special Request</a>
+                                </li> 
                                 <?php
                                 }
                                 else
