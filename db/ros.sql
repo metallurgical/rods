@@ -41,8 +41,9 @@ CREATE TABLE IF NOT EXISTS `customers` (
 --
 
 INSERT INTO `customers` (`customer_id`, `customer_password`, `customer_name`, `customer_ic`, `customer_phone`, `customer_email`, `customer_address`) VALUES
-(1, '123', 'emi', '321', '678', 'qwe', 'Machang'),
-(2, 'ert', 'ad', '56', 'fsdf@yahoo.com', 'fsdf@yahoo.com', '');
+(1, '123', 'emi', '321', '012123456', 'qwe@yahoo.com', 'Machang'),
+(2, 'ert', 'ad',  '56',  '012123456', 'fsdf@yahoo.com', 'Kulai'),
+(3, 'qwe', 'dey', '123', '012123456', 'dey@yahoo.com', 'Jertih');
 
 -- --------------------------------------------------------
 
